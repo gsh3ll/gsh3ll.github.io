@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>github on gsh3ll</title>
-    <link>http://gsh3ll.github.io/tags/github/</link>
+    <link>http://gsh3ll.top/tags/github/</link>
     <description>Recent content in github on gsh3ll</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 24 Aug 2019 11:33:02 +0000</lastBuildDate><atom:link href="http://gsh3ll.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Aug 2019 11:33:02 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>搭建Github-Hexo博客</title>
-      <link>http://gsh3ll.github.io/posts/%E6%90%AD%E5%BB%BAgithub-hexo%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://gsh3ll.top/posts/%E6%90%AD%E5%BB%BAgithub-hexo%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Sat, 24 Aug 2019 11:33:02 +0000</pubDate>
       
-      <guid>http://gsh3ll.github.io/posts/%E6%90%AD%E5%BB%BAgithub-hexo%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://gsh3ll.top/posts/%E6%90%AD%E5%BB%BAgithub-hexo%E5%8D%9A%E5%AE%A2/</guid>
       <description>Hexo是一个基于node.js开发，开源的静态博客生成器。此文章用作记录搭建该博客的过程，以及中途遇到的问题。因为已经弃用七牛云的缘故，本文的图片已经无法显示，故图片已被删除。
 软件安装 Hexo是一个开源的静态博客生成器，用node.js开发，所以在安装Hexo前我们需要先安装node.js。
 node.js下载地址：https://nodejs.org/zh-cn/

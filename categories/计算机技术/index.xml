@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算机技术 on gsh3ll</title>
-    <link>http://gsh3ll.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/</link>
+    <link>http://gsh3ll.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/</link>
     <description>Recent content in 计算机技术 on gsh3ll</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 10 Sep 2019 10:28:38 +0000</lastBuildDate><atom:link href="http://gsh3ll.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Sep 2019 10:28:38 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker学习笔记</title>
-      <link>http://gsh3ll.github.io/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>http://gsh3ll.top/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 10 Sep 2019 10:28:38 +0000</pubDate>
       
-      <guid>http://gsh3ll.github.io/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://gsh3ll.top/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 0x00 Docker的简介 Docker的简介什么的就不详细介绍了，优点如下：更高效的利用系统资源、更快速的启动时间、一致的运行环境、持续交付和部署、更轻松的迁移、更轻松的维护和扩展。
 0x01 Docker的安装 mac 在官网注册下载软件后，直接拖入application后即可。
