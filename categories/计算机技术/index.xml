@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机技术 on gsh3ll</title>
+    <link>http://gsh3ll.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 计算机技术 on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Sep 2019 10:28:38 +0000</lastBuildDate><atom:link href="http://gsh3ll.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker学习笔记</title>
+      <link>http://gsh3ll.github.io/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 10 Sep 2019 10:28:38 +0000</pubDate>
+      
+      <guid>http://gsh3ll.github.io/posts/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+0x00 Docker的简介 Docker的简介什么的就不详细介绍了，优点如下：更高效的利用系统资源、更快速的启动时间、一致的运行环境、持续交付和部署、更轻松的迁移、更轻松的维护和扩展。
+0x01 Docker的安装 mac 在官网注册下载软件后，直接拖入application后即可。
+linux 安装https协议、CA证书、dirmngr
+apt-get update apt-get install -y apt-transport-https ca-certificates apt-get install dirmngr 添加GPG密钥并添加更新源
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D echo &amp;#39;deb https://apt.dockerproject.org/repo debian-stretch main&amp;#39; &amp;amp;gt; /etc/apt/sources.list.d/docker.list 系统更新以及安装docker
+apt-get update apt-get install docker-engine 启动docker服务器
+service docker start 安装compose
+pip install docker-compose 0x02 Docker的基本命令 1.镜像的搜索。
+docker search [镜像名] 2.docker镜像拉取下载。
+docker pull [镜像名称] 下载镜像的速度会特别慢，可以在docker创建或修改 /etc/docker/daemon.json 文件，来设置里面添加国内的镜像加速器。
+{ &amp;#34;registry-mirrors&amp;#34; : [ &amp;#34;http://ovfftd6p.mirror.aliyuncs.com&amp;#34;, &amp;#34;http://registry.docker-cn.com&amp;#34;, &amp;#34;http://docker.mirrors.ustc.edu.cn&amp;#34;, &amp;#34;http://hub-mirror.</description>
+    </item>
+    
+  </channel>
+</rss>
