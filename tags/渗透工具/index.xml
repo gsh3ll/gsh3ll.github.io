@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>渗透工具 on gsh3ll</title>
+    <link>http://gsh3ll.top/tags/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 渗透工具 on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 16 Sep 2019 15:49:25 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/tags/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>渗透工具之john-the-ripper</title>
+      <link>http://gsh3ll.top/posts/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E4%B9%8Bjohn-the-ripper/</link>
+      <pubDate>Mon, 16 Sep 2019 15:49:25 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E4%B9%8Bjohn-the-ripper/</guid>
+      <description>最近项目上需要对客户Linux主机的密码做弱口令检测，向大佬们请教得知可以使用kali上的密码爆破工具：john the ripper。查了一下资料发现还挺强大的。因为不常用，记录下来以备日后查看。
+0x00 什么是John the ripper John the Ripper是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，适用于Windows和许多Linux系统，支持目前大多数的加密算法，譬如DES、MD4、MD5，其主要目的是破解不够牢固的Unix、Linux系统密码。支持字典破解和暴力破解。
+0x01 如何使用 john the ripper的执行文件在/usr/sbin/john目录下，其自带的字典文件在/usr/share/john目录下。
+破解Linux密码需要用到两个文件：
+ /etc/passwd 包含用户信息的文件 /etc/shadow 包含密码信息的文件  拿到这两个文件后，使用下面命令生成john需要的文件：
+unshadow /etc/passwd /etc/shadow &amp;gt; test_passwd 再使用下面命令进行暴力破解：
+john --wordlist=字典路径 test_passwd --format=xxx 可以看到john已经把密码给跑出来了。
+0x02 引用与参考  https://blog.csdn.net/qq_36119192/article/details/83373895
+https://xz.aliyun.com/t/3958
+ </description>
+    </item>
+    
+  </channel>
+</rss>

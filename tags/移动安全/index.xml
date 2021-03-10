@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>移动安全 on gsh3ll</title>
+    <link>http://gsh3ll.top/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/</link>
+    <description>Recent content in 移动安全 on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 Nov 2019 15:29:54 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS设备SSH中文输入问题</title>
+      <link>http://gsh3ll.top/posts/ios%E8%AE%BE%E5%A4%87ssh%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 06 Nov 2019 15:29:54 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/ios%E8%AE%BE%E5%A4%87ssh%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E9%97%AE%E9%A2%98/</guid>
+      <description>最近被安排测试几个iOS版本的APP，好几个月没整了，手感生疏。中间遇到一个APP在iOS目录下文件夹名称是中文的，通过MAC的terminal终端SSH进到iOS设备，在shell上只要输入中文就会报错。当时纠结在编码转码上，浪费了很多时间，找公司大佬一问，10s后就甩了一条链接过来（大佬还是大佬啊QAQ），想到以后会用到，记录一下。
+0x00 如何操作 解决办法：在/etc/inputrc 和~/.inputrc中加入如下内容(如果没有~/.inputrc的话，就新建一个)。
+echo &amp;#34;set input-meta on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set meta-flag on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set output-meta on&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set convert-meta off&amp;#34; &amp;gt; ~/.inputrc echo &amp;#34;set input-meta on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set meta-flag on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set output-meta on&amp;#34; &amp;gt; /etc/inputrc echo &amp;#34;set convert-meta off&amp;#34; &amp;gt; /etc/inputrc CTRL+D退出登录重新SSH到iOS设备即可。
+0x01 引用与参考  https://blog.0xbbc.com/2015/05/ios设备ssh中文输入/
+ </description>
+    </item>
+    
+  </channel>
+</rss>
