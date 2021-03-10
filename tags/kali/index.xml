@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kali on gsh3ll</title>
+    <link>http://gsh3ll.top/tags/kali/</link>
+    <description>Recent content in Kali on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 17 Dec 2020 13:17:00 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/tags/kali/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kali不完全笔记</title>
+      <link>http://gsh3ll.top/posts/kali%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 17 Dec 2020 13:17:00 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/kali%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0/</guid>
+      <description>Kali2020.4 设置root密码 sudo passwd root 升级更新 配置更新源 vi /etc/apt/sources.list deb http://http.kali.org/kali kali-rolling main non-free contrib deb http://mirrors.aliyun.com/debian stable main contrib non-free deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 更新软件及系统 apt update &amp;amp;&amp;amp; apt upgrade -y //升级软件列表并更新软件未命名.png apt dist-upgrade -y //升级系统 安装内核头文件 apt install linux-headers-$(uname -r) 清理系统 apt clean &amp;amp;&amp;amp; apt autoclean &amp;amp;&amp;amp; apt autoremove -y apt remove XXX //删除软件，但保留配置 apt purge XXX //删除软件，删除配置 apt clean //删除软件包缓存(/var/cache/apt/archives) apt autoremove //自动清理无用的依赖包 dpkg -l |grep ^rc|awk &amp;#39;{print $2}&amp;#39; |sudo xargs dpkg -P //清理系统残存配置 安装软件 安装中文输入法 apt-get update apt-get install ibus ibus-pinyin im-config //选择ibus输入法 cd~ vi .</description>
+    </item>
+    
+  </channel>
+</rss>

