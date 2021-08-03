@@ -1213,8 +1213,8 @@ $debug = 0;
             <title>Kali不完全笔记</title>
             <link>http://gsh3ll.top/2020/12/17/Kali%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0/</link>
             <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
-            <category term="Kali" scheme="http://gsh3ll.top/tags/Kali/" />
             <category term="渗透测试" scheme="http://gsh3ll.top/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" />
+            <category term="Kali" scheme="http://gsh3ll.top/tags/Kali/" />
             <pubDate>Thu, 17 Dec 2020 13:17:00 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;kali20204&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kali20204&#34;&gt;#&lt;/a&gt; Kali2020.4&lt;/h2&gt;
 &lt;h3 id=&#34;设置root密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设置root密码&#34;&gt;#&lt;/a&gt; 设置 root 密码&lt;/h3&gt;
