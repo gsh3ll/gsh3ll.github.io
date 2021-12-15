@@ -10,14 +10,57 @@
         </author>
         <description>Study-Note-Strong :)</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 29 Jul 2021 11:09:03 +0800</pubDate>
-        <lastBuildDate>Thu, 29 Jul 2021 11:09:03 +0800</lastBuildDate>
+        <pubDate>Fri, 03 Dec 2021 16:03:54 +0800</pubDate>
+        <lastBuildDate>Fri, 03 Dec 2021 16:03:54 +0800</lastBuildDate>
         <category term="Web安全" />
         <category term="笔记" />
         <category term="python" />
         <category term="靶机" />
         <category term="渗透测试" />
         <category term="信息安全" />
+        <item>
+            <guid isPermalink="true">http://gsh3ll.top/2021/12/03/macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83/</guid>
+            <title>macOS下优雅地配置PHP代码审计环境</title>
+            <link>http://gsh3ll.top/2021/12/03/macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83/</link>
+            <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
+            <category term="PHP,macOS,代码审计" scheme="http://gsh3ll.top/tags/PHP-macOS-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" />
+            <pubDate>Fri, 03 Dec 2021 16:03:54 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;最近在学习 PHP 代码审计，在虚拟机用 phpstudy+seay 搭建调试环境，但是在虚拟机中总感觉不是很顺手，网上搜资料时发现了国光&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuc3Fsc2VjLmNvbS8yMDIwLzA3L21hY3BocC5odG0=&#34;&gt; macOS 下优雅地配置 PHP 代码审计环境&lt;/span&gt;，照搬过来发现用起来很顺手，颜值也高，遂记录。&lt;/p&gt;
+&lt;h2 id=&#34;tools&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tools&#34;&gt;#&lt;/a&gt; Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;macOS 11.6&lt;/strong&gt;：bigsur 系统&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MAMP PRO 6.6&lt;/strong&gt;：PHP 集成环境&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Navivat Premium&lt;/strong&gt;：数据库图形化管理工具&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xdebug&lt;/strong&gt;：PHP 动态调试必备扩展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mamp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mamp&#34;&gt;#&lt;/a&gt; MAMP&lt;/h3&gt;
+&lt;p&gt;下载地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubWFjd2suY29tL3NvZnQvbWFtcC1wcm8=&#34;&gt;MAMP&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;默认安装即可。&lt;/p&gt;
+&lt;h3 id=&#34;mamp之mysql配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mamp之mysql配置&#34;&gt;#&lt;/a&gt; MAMP 之 Mysql 配置&lt;/h3&gt;
+&lt;p&gt;MySQL 配置主要参考下面的截图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83.assets/image.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Change password 这里重置 MySQL 的 root 密码很方便，服务停止状态下可以直接修改 root 用户密码&lt;/li&gt;
+&lt;li&gt;勾选上之后，可以本地使用类似于 Navicat 的软件来连接本地的 MySQL&lt;/li&gt;
+&lt;li&gt;MAMP 也自带 PHPMyAdmin 这种 Web 端的 MySQL 管理工具，PHP &amp;gt;= 5.5 环境下即可正常激活使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;mamp之php配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mamp之php配置&#34;&gt;#&lt;/a&gt; MAMP 之 PHP 配置&lt;/h3&gt;
+&lt;p&gt;PHP 配置主要参考下面的截图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83.assets/image-20211203175738477.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;切换 PHP 版本，支持：5.4.45、5.6.40、7.0.33、7.1.32、7.2.22、7.3.9、7.4.2&lt;/li&gt;
+&lt;li&gt;Open template，点击可以直接打开对应 PHP 版本的 ini 配置文件&lt;/li&gt;
+&lt;li&gt;开启 Xdebug 扩展，是一个好用的 PHP 扩展，提供调试和性能分析功能，代码审计必备&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在默认目录下面创建一个 phpinfo 页面：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;➜  htdocs &lt;span class=&#34;token builtin class-name&#34;&gt;pwd&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/Applications/MAMP/htdocs&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;➜  htdocs &lt;span class=&#34;token function&#34;&gt;ls&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;MAMP-PRO-Logo.png index.php         info.php&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;➜  htdocs &lt;span class=&#34;token function&#34;&gt;cat&lt;/span&gt; info.php&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;?php phpinfo&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;?&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83.assets/image-20211203175856652.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;mamp之xdebug&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mamp之xdebug&#34;&gt;#&lt;/a&gt; MAMP 之 Xdebug&lt;/h3&gt;
+&lt;p&gt;手动编辑配置文件：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;macOS%E4%B8%8B%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEPHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%8E%AF%E5%A2%83.assets/image-20211203175931573.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;修改完最后的内容如下：&lt;/p&gt;
+&lt;figure class=&#34;highlight ini&#34;&gt;&lt;figcaption data-lang=&#34;ini&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token header&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token section-name selector&#34;&gt;xdebug&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token key attr-name&#34;&gt;MAMP_Xdebug_MAMPzend_extension&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;&#34;&lt;span class=&#34;token inner-value&#34;&gt;/Applications/MAMP/bin/php/php5.4.45/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so&lt;/span&gt;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.remote_enable&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.remote_host&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;localhost&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.remote_port&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;9000&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.remote_autostart&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.profiler_enable&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;0&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.profiler_output_dir&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;&#34;&lt;span class=&#34;token inner-value&#34;&gt;/Applications/MAMP/tmp&lt;/span&gt;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token key attr-name&#34;&gt;xdebug.idekey&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token value attr-value&#34;&gt;&#34;&lt;span class=&#34;token inner-value&#34;&gt;this_is_your_idekey&lt;/span&gt;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;修改完退出时候，这个时候 MAMP 会自动重启服务生效配置。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://gsh3ll.top/2021/07/29/MacOS%E5%B0%8F%E8%AE%B0/</guid>
             <title>MacOS小记</title>
