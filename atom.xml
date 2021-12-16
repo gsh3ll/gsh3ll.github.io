@@ -9,12 +9,7 @@
       <name>gsh3ll</name>
     </author>
     <updated>2021-12-16T07:32:56.000Z</updated>
-    <category term="Web安全" />
-    <category term="笔记" />
-    <category term="python" />
-    <category term="靶机" />
-    <category term="渗透测试" />
-    <category term="信息安全" />
+    <category term="潜心学安全，低调求发展。" />
     <entry>
         <id>http://gsh3ll.top/2021/12/16/%E5%8F%8D%E5%BC%B9shell%E5%8E%9F%E7%90%86%E5%92%8C%E5%B8%B8%E8%A7%81%E5%8F%8D%E5%BC%B9shell%E6%96%B9%E5%BC%8F/</id>
         <title>反弹shell原理和常见反弹shell方式</title>
