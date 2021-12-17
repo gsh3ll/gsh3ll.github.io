@@ -32,6 +32,18 @@
             ]
         },
         {
+            "id": "http://gsh3ll.top/2021/11/17/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F/",
+            "url": "http://gsh3ll.top/2021/11/17/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F/",
+            "title": "macOS下优雅地抓取小程序流量",
+            "date_published": "2021-11-17T02:37:33.000Z",
+            "content_html": "<h1 id=\"macos下优雅地抓取小程序流量\"><a class=\"anchor\" href=\"#macos下优雅地抓取小程序流量\">#</a> macOS 下优雅地抓取小程序流量</h1>\n<p>准备：</p>\n<ul>\n<li>\n<p>Burpsuite（安装 Burpsuite 证书到 macOS 系统中）</p>\n</li>\n<li>\n<p>Proxifer<br />\n 使用 <code>brew install --cask proxifier</code>  安装</p>\n<pre><code class=\"language-纯文本\">## 激活序列号\nYour name or company \nname:[macwk.com](http://macwk.com)\nYour registration \nkey:2DNRX-V3PNK-TEGYN-DR01D-9UGGT\n</code></pre>\n</li>\n<li>\n<p>Wechat for Mac</p>\n</li>\n<li>\n<p>关掉梯子</p>\n</li>\n</ul>\n<p>原理：</p>\n<p>通过 Proxifer 工具代理微信小程序流量到 Burp</p>\n<h1 id=\"安装证书\"><a class=\"anchor\" href=\"#安装证书\">#</a> 安装证书</h1>\n<p>开启 bp，浏览器访问 127.0.0.1:8080 下载 CA 证书，打开并选择始终信任。</p>\n<h1 id=\"添加proxifer规则\"><a class=\"anchor\" href=\"#添加proxifer规则\">#</a> 添加 Proxifer 规则</h1>\n<p>添加代理规则 Proxies，添加代理 填入 burpSuite 代理 ip 和端口选择 https 保存即可。</p>\n<p><img data-src=\"/images/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F.assets/image.png\" alt=\"\" /></p>\n<p>再添加 Rules 过滤规则，为微信小程序添加一个专属的过滤规则。</p>\n<p><img data-src=\"/images/%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8macOS%E4%B8%8B%E6%8A%93%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%81%E9%87%8F.assets/image_1.png\" alt=\"\" /></p>\n<p>通过 command+shift+G 可以打开访达，输入指定路径 / Applications/WeChat.app/Contents/MacOS，并打开 mac 的微信小程序。</p>\n<p>选择微信小程序主程序 (Mini Program.app) 即可。</p>\n<p>务必先打开 Proxifer，再打开 bup，再打开小程序，全程需要关闭梯子。</p>\n<h1 id=\"关于clash\"><a class=\"anchor\" href=\"#关于clash\">#</a> 关于 clash</h1>\n<p>可以在 Proxifer 中添加 clash，设置为直连，clash 勾去设置为默认代理选项，即可访问 google。</p>\n",
+            "tags": [
+                "安全技术",
+                "macOS",
+                "小程序"
+            ]
+        },
+        {
             "id": "http://gsh3ll.top/2021/07/29/MacOS%E5%B0%8F%E8%AE%B0/",
             "url": "http://gsh3ll.top/2021/07/29/MacOS%E5%B0%8F%E8%AE%B0/",
             "title": "MacOS小记",
