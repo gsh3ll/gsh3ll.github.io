@@ -14,13 +14,13 @@
         <lastBuildDate>Sun, 19 Dec 2021 15:27:41 +0800</lastBuildDate>
         <category term="潜心学安全，低调求发展。" />
         <item>
-            <guid isPermalink="true">http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
-            <title>【内网学习笔记】内网本地信息收集</title>
-            <link>http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+            <guid isPermalink="true">http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+            <title>【内网学习笔记】本地信息收集</title>
+            <link>http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
             <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
             <category term="内网安全" scheme="http://gsh3ll.top/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" />
             <pubDate>Sun, 19 Dec 2021 15:27:41 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;内网本地信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#内网本地信息收集&#34;&gt;#&lt;/a&gt; 内网本地信息收集&lt;/h1&gt;
+            <description><![CDATA[ &lt;h1 id=&#34;本地信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#本地信息收集&#34;&gt;#&lt;/a&gt; 本地信息收集&lt;/h1&gt;
 &lt;p&gt;进入内网后，快速对当前机器角色的判断、当前机器所处网络环境的拓扑结构进行分析和判断、当前机器所在区域的判断。&lt;/p&gt;
 &lt;h2 id=&#34;手动收集本机信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#手动收集本机信息&#34;&gt;#&lt;/a&gt; 手动收集本机信息&lt;/h2&gt;
 &lt;p&gt;本机信息包括：操作系统、权限、内网 IP 地址段、杀毒软件、端口、服务、补丁更新频率、网络连接、共享、会话。&lt;/p&gt;
@@ -136,7 +136,7 @@
 &lt;h3 id=&#34;wmic脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#wmic脚本&#34;&gt;#&lt;/a&gt; wmic 脚本&lt;/h3&gt;
 &lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnV6enlzZWN1cml0eS5jb20vc2NyaXB0cy9maWxlcy93bWljX2luZm8ucmFy&#34;&gt;https://www.fuzzysecurity.com/scripts/files/wmic_info.rar&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;执行脚本后会将结果写入一个 html 文件。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;/images/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.assets/image_2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/images/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.assets/image_2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;empire下主机信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#empire下主机信息收集&#34;&gt;#&lt;/a&gt; Empire 下主机信息收集&lt;/h3&gt;
 &lt;p&gt;Empire 是一款针对 Windows 的渗透测试工具，与 MSF 类似。&lt;/p&gt;
 &lt;p&gt;Empire 提供了用于收集主机信息的模块。利用 &lt;code&gt;usemodule situational_awareness/host/winenum&lt;/code&gt;  模块，可以查看本机用户信息、系统基本信息、剪贴板等信息。&lt;/p&gt;
